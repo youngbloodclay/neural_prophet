@@ -355,11 +355,7 @@ def tabularize_univariate_datetime(
 
     def _stride_timestamps_for_forecasts(x):
         # only for case where n_lags > 0
-        if x.dtype != np.float64:
-            dtype = np.datetime64
-        else:
-            dtype = np.float64
-        return np.array([x[i + max_lags : i + max_lags + n_forecasts] for i in range(n_samples)], dtype=dtype)
+        return np.array([x[i + max_lags : i + max_lags + n_forecasts] for i in range(n_samples)], dtype=np.float64)
 
     # time is the time at each forecast step
     t = df.loc[:, "t"].values
